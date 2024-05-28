@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People of Skyrim</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: blue;
+            margin: 20px;
+            background-color: #020230;
+        }
+        pre {
+            background-color: #333;
+            color: antiquewhite;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .key { color: #008cff; }
+        .string { color: #dc63e7; }
+        .number { color: #f05c2f; }
+        .null { color: #2d87d1; }
+    </style>
+</head>
+<body>
+    <h1>People of Skyrim</h1>
+    <pre id="json-content">Loading...</pre>
+
+    <script>
+        function syntaxHighlight(json) {
+            json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|\b-?\d+(\.\d+)?([eE][+-]?\d+)?\b)/g, function (match) {
+                let cls = 'number';
+                if (/^"/.test(match)) {
+                    if (/:$/.test(match)) {
+                        cls = 'key';
+                    } else {
+                        cls = 'string';
+                    }
+                } else if (/true|false/.test(match)) {
+                    cls = 'boolean';
+                } else if (/null/.test(match)) {
+                    cls = 'null';
+                }
+                return '<span class="' + cls + '">' + match + '</span>';
+            });
+        }
+
+        fetch('people.json')
+            .then(response => response.json())
+            .then(data => {
+                const jsonContent = JSON.stringify(data, null, 2);
+                document.getElementById('json-content').innerHTML = syntaxHighlight(jsonContent);
+            })
+            .catch(error => {
+                document.getElementById('json-content').textContent = 'Error loading JSON: ' + error;
+            });
+    </script>
+</body>
+</html>

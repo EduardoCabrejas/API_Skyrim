@@ -1,14 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
     <title>API Skyrim</title>
 </head>
+
 <body>
-    <h1>API Skyrim</h1>
-    <a href="./pages/skyrim.html">Conoce Skyrim</a>
+    <div class="container">
+        <h1>Bienvenido/a Dovahkiin</h1>
+        <a href="json-viewer.html" target="_blank">Conoce Skyrim. Ve al JSON</a>
+        <section class="areas">
+            <div class="cards">
+                <img src="./assets/SR-symbol-Whiterun.png">
+                <p data-ubication="Carrera Blanca">Carrera Blanca</p>
+                <p data-ubication="Carrera Blanca">Residentes de Carrera Blanca</p>
+            </div>
+            <div class="cards">
+                <img src="./assets/SR-symbol-Falkreath.png"> 
+                <p data-ubication="Falkreath">Falkreath</p>
+                <p data-ubication="Falkreath">Residentes de Falkreath</p>
+            </div>
+            <div class="cards">
+                <img src="./assets/SR-symbol-Windhelm.png">
+                <p data-ubication="Ventalia">Ventalia</p>
+                <p data-ubication="Ventalia">Residentes de Ventalia</p>
+            </div>
+            <div class="cards">
+                <img src="./assets/SR-symbol-Riften.png">
+                <p data-ubication="Riften">Riften</p>
+                <p data-ubication="Riften">Residentes de Riften</p>
+            </div>
+            <div class="cards">
+                <img src="./assets/SR-symbol-Solitude.png">
+                <p data-ubication="Soledad">Soledad</p>
+                <p data-ubication="Soledad">Residentes de Soledad</p>
+            </div>
+        </div>
+        <section id="members">
+            <button onclick="hideSection('members')">Ocultar</button>
+        </section>
+
+    <script src="./script.js"></script>
 </body>
 </html>
